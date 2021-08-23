@@ -19,8 +19,13 @@ class QuestionBox extends StatelessWidget{
         Row(
           children: <Widget>[ElevatedButton(
             onPressed: () => this.nextQuestion(_questions[_index][_index][0].value),
-            style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.blue,
+              onPrimary: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25)
+              ),
+              elevation: 15.0
             ),
             child: Text(_questions[_index][_index][0].question)
           )],
