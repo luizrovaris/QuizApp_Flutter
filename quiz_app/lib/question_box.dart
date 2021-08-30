@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class QuestionBox extends StatelessWidget{
+class QuestionBox extends StatelessWidget {
   final _index;
   final _questions;
   final Function nextQuestion;
@@ -11,43 +11,61 @@ class QuestionBox extends StatelessWidget{
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Row(
-          children: <Widget>[
-              Text('Seleciona a afirmação correta')
-            ]
-        ),
-        Row(
-          children: <Widget>[ElevatedButton(
-            onPressed: () => this.nextQuestion(_questions[_index][_index][0].value),
-            style: ElevatedButton.styleFrom(
-              primary: Colors.blue,
-              onPrimary: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(25)
-              ),
-              elevation: 15.0
+        Row(children: <Widget>[
+          Expanded(
+            child: Text(
+              'Seleciona a afirmação correta',
+              textAlign: TextAlign.center,
             ),
-            child: Text(_questions[_index][_index][0].question)
-          )],
-        ),
+          ),
+        ]),
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('OU')
+            Flexible(
+              child: ElevatedButton(
+                  onPressed: () =>
+                      this.nextQuestion(_questions[_index][_index][0].value),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.blue,
+                      onPrimary: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25)),
+                      elevation: 15.0),
+                  child: Text(
+                    _questions[_index][_index][0].question
+                  )),
+            )
           ],
         ),
         Row(
-          children: <Widget>[ElevatedButton(
-            onPressed: () => this.nextQuestion(_questions[_index][_index][1].value),
-            style: ElevatedButton.styleFrom(
-              primary: Colors.green,
-              onPrimary: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(25)
+          children: <Widget>[
+            Expanded(
+              child: Text(
+                'OU',
+                textAlign: TextAlign.center,
               ),
-              elevation: 15.0
             ),
-            child: Text(_questions[_index][_index][1].question)
-          )],
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Flexible(
+              child: ElevatedButton(
+                  onPressed: () =>
+                      this.nextQuestion(_questions[_index][_index][1].value),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.green,
+                      onPrimary: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25)),
+                      elevation: 15.0),
+                  child: Text(
+                    _questions[_index][_index][1].question
+                  )),
+            )
+          ],
         )
       ],
     );
